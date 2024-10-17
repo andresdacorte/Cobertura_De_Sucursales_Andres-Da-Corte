@@ -19,6 +19,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.awt.Component;
 /**
  *
  * @author dacor
@@ -26,7 +27,7 @@ import java.io.IOException;
 
 public class RedTransporte {
     private Grafo grafo;
-    private Map<String, Parada> paradas;
+    public Map<String, Parada> paradas;
     private List<Sucursal> sucursales;
     private int radioCobertura;
 
@@ -111,7 +112,7 @@ public class RedTransporte {
 
     // Mostrar el grafo
     public void mostrarGrafo() {
-        System.setProperty("org.graphstream.ui", "swing");
+    System.setProperty("org.graphstream.ui", "swing");
         Graph graph = new SingleGraph("Red de Transporte");
 
         for (String parada : grafo.obtenerParadas()) {
@@ -133,10 +134,11 @@ public class RedTransporte {
         graph.display();
     }
 
+
     // Establecer el valor de t
     public void establecerRadioCobertura(int nuevoRadio) {
         this.radioCobertura = nuevoRadio;
-        // Recalcular la cobertura si es necesario
+        JOptionPane.showMessageDialog(null, "Radio de cobertura actualizado a " + nuevoRadio);
     }
 
     // Colocar sucursal en una parada

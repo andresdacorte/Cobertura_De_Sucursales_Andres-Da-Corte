@@ -36,6 +36,9 @@ public class Ventana extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         CargarArchivo = new javax.swing.JButton();
         MostrarGrafo = new javax.swing.JButton();
+        EstablecerRadio = new javax.swing.JButton();
+        ColocarSucursal = new javax.swing.JButton();
+        QuitarSucursal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,16 +56,43 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
+        EstablecerRadio.setText("Establecer Radio");
+        EstablecerRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstablecerRadioActionPerformed(evt);
+            }
+        });
+
+        ColocarSucursal.setText("Colocar una Sucursal");
+        ColocarSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColocarSucursalActionPerformed(evt);
+            }
+        });
+
+        QuitarSucursal.setText("Quitar un Sucursal");
+        QuitarSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitarSucursalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(CargarArchivo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(QuitarSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(CargarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ColocarSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(42, 42, 42)
-                .addComponent(MostrarGrafo)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EstablecerRadio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MostrarGrafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +101,13 @@ public class Ventana extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CargarArchivo)
                     .addComponent(MostrarGrafo))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EstablecerRadio)
+                    .addComponent(ColocarSucursal))
+                .addGap(26, 26, 26)
+                .addComponent(QuitarSucursal)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,6 +140,79 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MostrarGrafoActionPerformed
 
+    private void EstablecerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstablecerRadioActionPerformed
+        try {
+            String input = JOptionPane.showInputDialog(this, "Ingrese el nuevo valor de radio de cobertura:");
+            if (input != null) {
+                int nuevoRadio = Integer.parseInt(input);
+                RedGlobal.redGlobal.establecerRadioCobertura(nuevoRadio);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un valor numérico válido.");
+        }
+    }//GEN-LAST:event_EstablecerRadioActionPerformed
+
+    private void ColocarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColocarSucursalActionPerformed
+        
+        if (RedGlobal.redGlobal.paradas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay paradas disponibles.");
+            return;
+        }
+
+        Object[] paradasArray = RedGlobal.redGlobal.paradas.keySet().toArray();
+        String seleccion = (String) JOptionPane.showInputDialog(this, "Seleccione la parada:", "Colocar/Quitar Sucursal",
+                JOptionPane.PLAIN_MESSAGE, null, paradasArray, paradasArray[0]);
+
+        if (seleccion != null && !seleccion.trim().isEmpty()) {
+            Parada parada = RedGlobal.redGlobal.paradas.get(seleccion);
+            if (parada.tieneSucursal()) {
+                RedGlobal.redGlobal.quitarSucursal(seleccion);
+                JOptionPane.showMessageDialog(this, "Sucursal quitada de la parada: " + seleccion);
+            } else {
+                RedGlobal.redGlobal.colocarSucursal(seleccion);
+                JOptionPane.showMessageDialog(this, "Sucursal colocada en la parada: " + seleccion);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado una parada válida.");
+        }
+        
+    }//GEN-LAST:event_ColocarSucursalActionPerformed
+
+    private void QuitarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarSucursalActionPerformed
+        if (RedGlobal.redGlobal.paradas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay paradas disponibles.");
+            return;
+        }
+
+        List<String> paradasConSucursal = new ArrayList<>();
+        for (Map.Entry<String, Parada> entry : RedGlobal.redGlobal.paradas.entrySet()) {
+            if (entry.getValue().tieneSucursal()) {
+                paradasConSucursal.add(entry.getKey());
+            }
+        }
+
+        if (paradasConSucursal.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay sucursales disponibles para quitar.");
+            return;
+        }
+
+        Object[] paradasArray = paradasConSucursal.toArray();
+        String seleccion = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para quitar la sucursal:", "Quitar Sucursal",
+                JOptionPane.PLAIN_MESSAGE, null, paradasArray, paradasArray[0]);
+
+        if (seleccion != null && !seleccion.trim().isEmpty()) {
+            Parada parada = RedGlobal.redGlobal.paradas.get(seleccion);
+            if (parada.tieneSucursal()) {
+                RedGlobal.redGlobal.quitarSucursal(seleccion);
+                JOptionPane.showMessageDialog(this, "Sucursal quitada de la parada: " + seleccion);
+            } else {
+                JOptionPane.showMessageDialog(this, "La parada seleccionada no tiene una sucursal para quitar.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se ha seleccionado una parada válida.");
+        }
+    }//GEN-LAST:event_QuitarSucursalActionPerformed
+   
     /**
      * @param args the command line arguments
      */
@@ -141,7 +250,10 @@ public class Ventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CargarArchivo;
+    private javax.swing.JButton ColocarSucursal;
+    private javax.swing.JButton EstablecerRadio;
     private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton QuitarSucursal;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
