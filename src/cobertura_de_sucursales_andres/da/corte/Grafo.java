@@ -8,30 +8,29 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
-import java.util.*;
-
-// Clase Grafo
 public class Grafo {
-    private Map<String, List<String>> adyacencias;
+    private MiMapa<String, MiLista<String>> adyacencias;
 
     public Grafo() {
-        this.adyacencias = new HashMap<>();
+        this.adyacencias = new MiMapa<>();
     }
 
     public void agregarParada(String parada) {
-        adyacencias.putIfAbsent(parada, new ArrayList<>());
+        if (!adyacencias.contieneClave(parada)) {
+            adyacencias.poner(parada, new MiLista<>());
+        }
     }
 
     public void agregarConexion(String origen, String destino) {
-        adyacencias.get(origen).add(destino);
-        adyacencias.get(destino).add(origen);
+        adyacencias.obtener(origen).agregar(destino);
+        adyacencias.obtener(destino).agregar(origen);
     }
 
-    public List<String> obtenerAdyacentes(String parada) {
-        return adyacencias.getOrDefault(parada, new ArrayList<>());
+    public MiLista<String> obtenerAdyacentes(String parada) {
+        return adyacencias.obtener(parada) != null ? adyacencias.obtener(parada) : new MiLista<>();
     }
 
-    public Set<String> obtenerParadas() {
-        return adyacencias.keySet();
+    public MiConjunto<String> obtenerParadas() {
+        return adyacencias.obtenerClaves();
     }
 }

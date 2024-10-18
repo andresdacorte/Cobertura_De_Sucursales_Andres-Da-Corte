@@ -4,12 +4,6 @@
  */
 package cobertura_de_sucursales_andres.da.corte;
 
-import java.util.*;
-
-/**
- *
- * @author dacor
- */
 public class Parada {
     private String nombre;
     private boolean esTransferencia;
