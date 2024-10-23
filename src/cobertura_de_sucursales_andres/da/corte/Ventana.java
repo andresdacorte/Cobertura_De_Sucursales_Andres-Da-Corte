@@ -4,10 +4,7 @@
  */
 package cobertura_de_sucursales_andres.da.corte;
 
-import java.util.*;
 import javax.swing.*;
-import java.io.*;
-import org.json.*;
 
 /**
  *
@@ -42,8 +39,15 @@ public class Ventana extends javax.swing.JFrame {
         VerCoberturaSucursal = new javax.swing.JButton();
         VerCoberturaTotal = new javax.swing.JButton();
         AgregarLinea = new javax.swing.JButton();
+        CerrarVentana = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        VentanaAnterior = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CargarArchivo.setText("Cargar un Archivo");
         CargarArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +55,7 @@ public class Ventana extends javax.swing.JFrame {
                 CargarArchivoActionPerformed(evt);
             }
         });
+        jPanel1.add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 180, -1));
 
         MostrarGrafo.setText("Mostrar Grafo");
         MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +63,7 @@ public class Ventana extends javax.swing.JFrame {
                 MostrarGrafoActionPerformed(evt);
             }
         });
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 180, -1));
 
         EstablecerRadio.setText("Establecer Radio");
         EstablecerRadio.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +71,7 @@ public class Ventana extends javax.swing.JFrame {
                 EstablecerRadioActionPerformed(evt);
             }
         });
+        jPanel1.add(EstablecerRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 180, -1));
 
         ColocarSucursal.setText("Colocar una Sucursal");
         ColocarSucursal.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +79,7 @@ public class Ventana extends javax.swing.JFrame {
                 ColocarSucursalActionPerformed(evt);
             }
         });
+        jPanel1.add(ColocarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 180, -1));
 
         QuitarSucursal.setText("Quitar un Sucursal");
         QuitarSucursal.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +87,7 @@ public class Ventana extends javax.swing.JFrame {
                 QuitarSucursalActionPerformed(evt);
             }
         });
+        jPanel1.add(QuitarSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 180, -1));
 
         VerCoberturaSucursal.setText("Ver Cobertura");
         VerCoberturaSucursal.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +95,7 @@ public class Ventana extends javax.swing.JFrame {
                 VerCoberturaSucursalActionPerformed(evt);
             }
         });
+        jPanel1.add(VerCoberturaSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 180, -1));
 
         VerCoberturaTotal.setText("Cobertura Total");
         VerCoberturaTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +103,7 @@ public class Ventana extends javax.swing.JFrame {
                 VerCoberturaTotalActionPerformed(evt);
             }
         });
+        jPanel1.add(VerCoberturaTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 180, -1));
 
         AgregarLinea.setText("Agregar Linea");
         AgregarLinea.addActionListener(new java.awt.event.ActionListener() {
@@ -100,168 +111,62 @@ public class Ventana extends javax.swing.JFrame {
                 AgregarLineaActionPerformed(evt);
             }
         });
+        jPanel1.add(AgregarLinea, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 180, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(QuitarSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CargarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ColocarSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AgregarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EstablecerRadio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(MostrarGrafo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(VerCoberturaSucursal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(VerCoberturaTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CargarArchivo)
-                    .addComponent(MostrarGrafo))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EstablecerRadio)
-                    .addComponent(ColocarSucursal))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(QuitarSucursal)
-                    .addComponent(VerCoberturaSucursal))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(VerCoberturaTotal)
-                    .addComponent(AgregarLinea))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
+        CerrarVentana.setText("Salir");
+        CerrarVentana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarVentanaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CerrarVentana, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MENU");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
+
+        VentanaAnterior.setText("Volver");
+        VentanaAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VentanaAnteriorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(VentanaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 100, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cobertura_de_sucursales_andres/da/corte/menu_background.png"))); // NOI18N
+        fondo.setText("fondo");
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
-        try {
-            RedGlobal.redGlobal.cargarDesdeArchivo();
-            JOptionPane.showMessageDialog(this, "Archivo cargado exitosamente.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "No se ha podido cargar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
-        }   
-    }//GEN-LAST:event_CargarArchivoActionPerformed
+    private void CerrarVentanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarVentanaActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CerrarVentanaActionPerformed
 
-    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
-        RedGlobal.redGlobal.mostrarGrafo();
-    }//GEN-LAST:event_MostrarGrafoActionPerformed
-
-    private void EstablecerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstablecerRadioActionPerformed
-        String nuevoRadio = JOptionPane.showInputDialog(this, "Ingrese el valor del nuevo radio:");
-        try {
-            int radio = Integer.parseInt(nuevoRadio);
-            RedGlobal.redGlobal.establecerRadioCobertura(radio);
-            JOptionPane.showMessageDialog(this, "Nuevo radio establecido a " + radio);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_EstablecerRadioActionPerformed
-
-    private void ColocarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColocarSucursalActionPerformed
-        MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
-        MiLista<String> paradasFiltradas = new MiLista<>();
-        Nodo<String> nodoActual = paradasDisponibles.obtenerElementos().cabeza;
-        while (nodoActual != null) {
-            String parada = nodoActual.valor;
-            Parada paradaObj = RedGlobal.redGlobal.paradas.obtener(parada);
-            if (!paradaObj.tieneSucursal()) {
-                paradasFiltradas.agregar(parada);
-            }
-            nodoActual = nodoActual.siguiente;
-        }
-
-        String[] paradasArray = new String[paradasFiltradas.longitud()];
-        nodoActual = paradasFiltradas.cabeza;
-        int index = 0;
-        while (nodoActual != null) {
-            paradasArray[index++] = nodoActual.valor;
-            nodoActual = nodoActual.siguiente;
-        }
-
-        String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para colocar o quitar la sucursal:",
-                "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
-
-        if (nombreParada != null && !nombreParada.trim().isEmpty()) {
-            if (RedGlobal.redGlobal.paradas.contieneClave(nombreParada)) {
-                Parada parada = RedGlobal.redGlobal.paradas.obtener(nombreParada);
-                if (parada.tieneSucursal()) {
-                    RedGlobal.redGlobal.quitarSucursal(nombreParada);
-                    JOptionPane.showMessageDialog(this, "Sucursal eliminada de la parada: " + nombreParada);
-                } else {
-                    RedGlobal.redGlobal.colocarSucursal(nombreParada);
-                    JOptionPane.showMessageDialog(this, "Sucursal colocada en la parada: " + nombreParada);
+    private void AgregarLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLineaActionPerformed
+        String nombreLinea = JOptionPane.showInputDialog("Ingrese el nombre de la nueva línea:");
+        if (nombreLinea != null && !nombreLinea.isEmpty()) {
+            // Solicitar las paradas de la línea
+            String paradasInput = JOptionPane.showInputDialog("Ingrese las paradas de la nueva línea, separadas por comas:");
+            if (paradasInput != null && !paradasInput.isEmpty()) {
+                String[] paradasArray = paradasInput.split(",");
+                MiLista<String> paradasLinea = new MiLista<>();
+                for (String parada : paradasArray) {
+                    paradasLinea.agregar(parada.trim());
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "La parada especificada no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+                RedGlobal.redGlobal.agregarLinea(nombreLinea, paradasLinea);
+                JOptionPane.showMessageDialog(this, "Línea " + nombreLinea + " agregada correctamente.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_ColocarSucursalActionPerformed
+    }//GEN-LAST:event_AgregarLineaActionPerformed
 
-    private void QuitarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarSucursalActionPerformed
-        MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
-        MiLista<String> paradasConSucursal = new MiLista<>();
-        Nodo<String> nodoActual = paradasDisponibles.obtenerElementos().cabeza;
-        while (nodoActual != null) {
-            String parada = nodoActual.valor;
-            Parada paradaObj = RedGlobal.redGlobal.paradas.obtener(parada);
-            if (paradaObj.tieneSucursal()) {
-                paradasConSucursal.agregar(parada);
-            }
-            nodoActual = nodoActual.siguiente;
-        }
-
-        String[] paradasArray = new String[paradasConSucursal.longitud()];
-        nodoActual = paradasConSucursal.cabeza;
-        int index = 0;
-        while (nodoActual != null) {
-            paradasArray[index++] = nodoActual.valor;
-            nodoActual = nodoActual.siguiente;
-        }
-
-        String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para quitar la sucursal:",
-                "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
-
-        if (nombreParada != null && !nombreParada.trim().isEmpty()) {
-            if (RedGlobal.redGlobal.paradas.contieneClave(nombreParada)) {
-                Parada parada = RedGlobal.redGlobal.paradas.obtener(nombreParada);
-                if (parada.tieneSucursal()) {
-                    RedGlobal.redGlobal.quitarSucursal(nombreParada);
-                    JOptionPane.showMessageDialog(this, "Sucursal quitada de la parada: " + nombreParada);
-                } else {
-                    JOptionPane.showMessageDialog(this, "La parada no tiene una sucursal.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "La parada especificada no existe.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_QuitarSucursalActionPerformed
+    private void VerCoberturaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCoberturaTotalActionPerformed
+        RedGlobal.redGlobal.revisarCoberturaTotal();
+    }//GEN-LAST:event_VerCoberturaTotalActionPerformed
 
     private void VerCoberturaSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCoberturaSucursalActionPerformed
         MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
@@ -285,7 +190,7 @@ public class Ventana extends javax.swing.JFrame {
         }
 
         String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para ver la cobertura:",
-                "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
+            "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
 
         if (nombreParada != null && !nombreParada.trim().isEmpty()) {
             // Aquí llamamos al método que verifica la cobertura de la sucursal seleccionada
@@ -295,26 +200,119 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_VerCoberturaSucursalActionPerformed
 
-    private void VerCoberturaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCoberturaTotalActionPerformed
-        RedGlobal.redGlobal.revisarCoberturaTotal();
-    }//GEN-LAST:event_VerCoberturaTotalActionPerformed
-
-    private void AgregarLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLineaActionPerformed
-        String nombreLinea = JOptionPane.showInputDialog("Ingrese el nombre de la nueva línea:");
-        if (nombreLinea != null && !nombreLinea.isEmpty()) {
-            // Solicitar las paradas de la línea
-            String paradasInput = JOptionPane.showInputDialog("Ingrese las paradas de la nueva línea, separadas por comas:");
-            if (paradasInput != null && !paradasInput.isEmpty()) {
-                String[] paradasArray = paradasInput.split(",");
-                MiLista<String> paradasLinea = new MiLista<>();
-                for (String parada : paradasArray) {
-                    paradasLinea.agregar(parada.trim());
-                }
-                RedGlobal.redGlobal.agregarLinea(nombreLinea, paradasLinea);
-                JOptionPane.showMessageDialog(this, "Línea " + nombreLinea + " agregada correctamente.");
+    private void QuitarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarSucursalActionPerformed
+        MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
+        MiLista<String> paradasConSucursal = new MiLista<>();
+        Nodo<String> nodoActual = paradasDisponibles.obtenerElementos().cabeza;
+        while (nodoActual != null) {
+            String parada = nodoActual.valor;
+            Parada paradaObj = RedGlobal.redGlobal.paradas.obtener(parada);
+            if (paradaObj.tieneSucursal()) {
+                paradasConSucursal.agregar(parada);
             }
+            nodoActual = nodoActual.siguiente;
         }
-    }//GEN-LAST:event_AgregarLineaActionPerformed
+
+        String[] paradasArray = new String[paradasConSucursal.longitud()];
+        nodoActual = paradasConSucursal.cabeza;
+        int index = 0;
+        while (nodoActual != null) {
+            paradasArray[index++] = nodoActual.valor;
+            nodoActual = nodoActual.siguiente;
+        }
+
+        String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para quitar la sucursal:",
+            "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
+
+        if (nombreParada != null && !nombreParada.trim().isEmpty()) {
+            if (RedGlobal.redGlobal.paradas.contieneClave(nombreParada)) {
+                Parada parada = RedGlobal.redGlobal.paradas.obtener(nombreParada);
+                if (parada.tieneSucursal()) {
+                    RedGlobal.redGlobal.quitarSucursal(nombreParada);
+                    JOptionPane.showMessageDialog(this, "Sucursal quitada de la parada: " + nombreParada);
+                } else {
+                    JOptionPane.showMessageDialog(this, "La parada no tiene una sucursal.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La parada especificada no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_QuitarSucursalActionPerformed
+
+    private void ColocarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColocarSucursalActionPerformed
+        MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
+        MiLista<String> paradasFiltradas = new MiLista<>();
+        Nodo<String> nodoActual = paradasDisponibles.obtenerElementos().cabeza;
+        while (nodoActual != null) {
+            String parada = nodoActual.valor;
+            Parada paradaObj = RedGlobal.redGlobal.paradas.obtener(parada);
+            if (!paradaObj.tieneSucursal()) {
+                paradasFiltradas.agregar(parada);
+            }
+            nodoActual = nodoActual.siguiente;
+        }
+
+        String[] paradasArray = new String[paradasFiltradas.longitud()];
+        nodoActual = paradasFiltradas.cabeza;
+        int index = 0;
+        while (nodoActual != null) {
+            paradasArray[index++] = nodoActual.valor;
+            nodoActual = nodoActual.siguiente;
+        }
+
+        String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para colocar o quitar la sucursal:",
+            "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
+
+        if (nombreParada != null && !nombreParada.trim().isEmpty()) {
+            if (RedGlobal.redGlobal.paradas.contieneClave(nombreParada)) {
+                Parada parada = RedGlobal.redGlobal.paradas.obtener(nombreParada);
+                if (parada.tieneSucursal()) {
+                    RedGlobal.redGlobal.quitarSucursal(nombreParada);
+                    JOptionPane.showMessageDialog(this, "Sucursal eliminada de la parada: " + nombreParada);
+                } else {
+                    RedGlobal.redGlobal.colocarSucursal(nombreParada);
+                    JOptionPane.showMessageDialog(this, "Sucursal colocada en la parada: " + nombreParada);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La parada especificada no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_ColocarSucursalActionPerformed
+
+    private void EstablecerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstablecerRadioActionPerformed
+        String nuevoRadio = JOptionPane.showInputDialog(this, "Ingrese el valor del nuevo radio:");
+        try {
+            int radio = Integer.parseInt(nuevoRadio);
+            RedGlobal.redGlobal.establecerRadioCobertura(radio);
+            JOptionPane.showMessageDialog(this, "Nuevo radio establecido a " + radio);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_EstablecerRadioActionPerformed
+
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
+        RedGlobal.redGlobal.mostrarGrafo();
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
+
+    private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
+        try {
+            RedGlobal.redGlobal.cargarDesdeArchivo();
+            JOptionPane.showMessageDialog(this, "Archivo cargado exitosamente.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No se ha podido cargar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_CargarArchivoActionPerformed
+
+    private void VentanaAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentanaAnteriorActionPerformed
+        VentanaInicio inicio = new VentanaInicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VentanaAnteriorActionPerformed
    
     /**
      * @param args the command line arguments
@@ -354,12 +352,16 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarLinea;
     private javax.swing.JButton CargarArchivo;
+    private javax.swing.JButton CerrarVentana;
     private javax.swing.JButton ColocarSucursal;
     private javax.swing.JButton EstablecerRadio;
     private javax.swing.JButton MostrarGrafo;
     private javax.swing.JButton QuitarSucursal;
+    private javax.swing.JButton VentanaAnterior;
     private javax.swing.JButton VerCoberturaSucursal;
     private javax.swing.JButton VerCoberturaTotal;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

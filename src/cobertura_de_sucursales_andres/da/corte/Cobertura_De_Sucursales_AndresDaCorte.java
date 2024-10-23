@@ -14,8 +14,10 @@ public class Cobertura_De_Sucursales_AndresDaCorte {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Ventana menu = new Ventana();
-        menu.setVisible(true);
+         
+        VentanaInicio inicio = new VentanaInicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setVisible(true);
     }
     
 }
