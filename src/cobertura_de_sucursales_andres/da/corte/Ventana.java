@@ -190,11 +190,18 @@ public class Ventana extends javax.swing.JFrame {
         }
 
         String nombreParada = (String) JOptionPane.showInputDialog(this, "Seleccione la parada para ver la cobertura:",
-            "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
+                "Seleccionar Parada", JOptionPane.QUESTION_MESSAGE, null, paradasArray, paradasArray.length > 0 ? paradasArray[0] : null);
 
         if (nombreParada != null && !nombreParada.trim().isEmpty()) {
-            // Aquí llamamos al método que verifica la cobertura de la sucursal seleccionada
-            RedGlobal.redGlobal.revisarCoberturaSucursal(nombreParada, "BFS");
+            String[] opcionesBusqueda = {"BFS", "DFS"};
+            String metodoBusqueda = (String) JOptionPane.showInputDialog(this, "Seleccione el método de búsqueda:",
+                    "Seleccionar Método", JOptionPane.QUESTION_MESSAGE, null, opcionesBusqueda, opcionesBusqueda[0]);
+
+            if (metodoBusqueda != null && !metodoBusqueda.trim().isEmpty()) {
+                RedGlobal.redGlobal.revisarCoberturaSucursal(nombreParada, metodoBusqueda);
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor seleccione un método de búsqueda válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
         }

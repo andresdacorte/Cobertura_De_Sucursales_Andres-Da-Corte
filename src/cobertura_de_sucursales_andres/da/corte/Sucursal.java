@@ -4,8 +4,6 @@
  */
 package cobertura_de_sucursales_andres.da.corte;
 
-import java.util.*;
-
 /**
  *
  * @author dacor

@@ -6,13 +6,10 @@ package cobertura_de_sucursales_andres.da.corte;
 
 
 import javax.swing.*;
-import java.io.*;
-import org.json.*;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.ui.view.Viewer;
-import org.graphstream.ui.view.View;
-import org.graphstream.ui.view.ViewerPipe;
+
 
 
 
