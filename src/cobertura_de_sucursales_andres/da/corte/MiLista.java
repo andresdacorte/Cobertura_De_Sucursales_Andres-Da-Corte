@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase auxiliar tipo lista enlazada para el manejo de distintos metodos.
+
 public class MiLista<T> {
     public Nodo<T> cabeza;
 

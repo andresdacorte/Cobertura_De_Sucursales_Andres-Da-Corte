@@ -13,6 +13,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     /**
      * Creates new form VentanaInicio
      */
+    
+    // Clase de tipo JFrame la cual da inicio al programa.
+    
     public VentanaInicio() {
         initComponents();
     }
@@ -89,6 +92,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Boton que da paso a la siguiente Ventana con todos los meotodos y funciones.
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Ventana menu = new Ventana();
         menu.setSize(700, 500);
@@ -96,7 +101,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    // Boton para cerrar el programa.
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed

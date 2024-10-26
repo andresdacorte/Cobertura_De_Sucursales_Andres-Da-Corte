@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase tipo parametro para la clase MiMapa.
+
 class NodoMapa<K, V> {
     K clave;
     V valor;

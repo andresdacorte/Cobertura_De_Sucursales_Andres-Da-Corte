@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase Sucursal con sus metodos basicos.
+
 public class Sucursal {
     private String parada;
     private int radioCobertura;

@@ -11,7 +11,7 @@ import org.graphstream.graph.implementations.*;
 import org.graphstream.ui.view.Viewer;
 
 
-
+//Clase RedTransporte (clase tipo lista), con todos los metodos a usar.
 
 public class RedTransporte {
     private Grafo grafo;
@@ -29,7 +29,8 @@ public class RedTransporte {
         this.viewer = null;
     }
 
-    // Métodos de la clase adaptados para trabajar sin java.util
+    // Metodo colocarSucursal que agrega una sucursal a una de las paradas agregadas anteriormente por el usuario. 
+    
     public void colocarSucursal(String nombreParada) {
         if (paradas.contieneClave(nombreParada)) {
             Parada parada = paradas.obtener(nombreParada);
@@ -38,6 +39,8 @@ public class RedTransporte {
             sucursales.agregar(nuevaSucursal);
         }
     }
+    
+    // Metodo quitarSucursal que revisa todas las paradas que tengan sucursal y elimina la seleccionada.
 
     public void quitarSucursal(String nombreParada) {
         if (paradas.contieneClave(nombreParada)) {
@@ -80,6 +83,8 @@ public class RedTransporte {
         System.out.println("Línea " + nombreLinea + " agregada correctamente.");
     }
     
+    // Metodo cargarDesdeArchivo que va de la mano junto a el metodo ReadJson para que una vez leido el json, sea procesado e ingresado a la ListaGlobal.
+    
     public void cargarDesdeArchivo() {
         limpiarDatosAnteriores();
         javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
@@ -99,7 +104,8 @@ public class RedTransporte {
         }
     }
 
-    // Método para leer y procesar JSON
+    // Método para leer y procesar JSON ingresado por el usuario.
+    
     private void readJSON(String jsonData) {
         try {
             org.json.JSONObject jsonObject = new org.json.JSONObject(jsonData);
@@ -148,7 +154,8 @@ public class RedTransporte {
             javax.swing.JOptionPane.showMessageDialog(null, "Error al procesar el archivo JSON: " + e.getMessage());
         }
     }
-
+    
+    // Metodo mostrarGrafo usando Graph Stream.
 
     public void mostrarGrafo() {
         System.setProperty("org.graphstream.ui", "swing");
@@ -188,13 +195,16 @@ public class RedTransporte {
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }
 
-    // Método para limpiar el grafo cuando se cierra la ventana del grafo
+    // Método para limpiar el grafo cuando se cierra la ventana del grafo.
+    
     private void limpiarGrafo() {
         if (viewer != null) {
             viewer.close();
             viewer = null;
         }
     }
+    
+    // Metodo para limpiar todos los datos guardados en caso de abrir un nuevo archivo Json.
     
     private void limpiarDatosAnteriores() {
         grafo = new Grafo();
@@ -203,9 +213,13 @@ public class RedTransporte {
         limpiarGrafo();
     }
     
+    // Metodo para cambiar el Radio de Cobertura (t) en cualquier momento.
+    
     public void establecerRadioCobertura(int nuevoRadio) {
         this.radioCobertura = nuevoRadio;
     }
+    
+    // Metodo para revisar la cobertura de una sucursal en especifico.
     
     public void revisarCoberturaSucursal(String nombreParada, String metodoBusqueda) {
         if (!paradas.contieneClave(nombreParada)) {
@@ -216,6 +230,8 @@ public class RedTransporte {
         MiConjunto<String> visitados = new MiConjunto<>();
         MiLista<String> cobertura = new MiLista<>();
         int limite = radioCobertura;
+        
+        // Metodo de busqueda BFS para la cobertura de la sucursal.
 
         if (metodoBusqueda.equalsIgnoreCase("BFS")) {
             MiLista<String> cola = new MiLista<>();
@@ -240,6 +256,9 @@ public class RedTransporte {
                 }
                 limite--;
             }
+            
+        // Metodo de busqueda DFS para la cobertura de la sucursal.    
+            
         } else if (metodoBusqueda.equalsIgnoreCase("DFS")) {
             MiLista<String> pila = new MiLista<>();
             pila.agregar(nombreParada);
@@ -266,11 +285,12 @@ public class RedTransporte {
         }
         JOptionPane.showMessageDialog(null, "Cobertura desde la sucursal en " + nombreParada + ":\n" + cobertura.coberturaToString());
     }
+        
+        // Metodo para obtener todas las paradas cubiertas por cada sucursal.
     
     public void revisarCoberturaTotal() {
         MiConjunto<String> cubiertas = new MiConjunto<>();
 
-        // Obtener todas las paradas cubiertas por cada sucursal
         Nodo<Sucursal> actualSucursal = sucursales.cabeza;
         while (actualSucursal != null) {
             String paradaInicial = actualSucursal.valor.getParada();
@@ -301,12 +321,15 @@ public class RedTransporte {
             actualSucursal = actualSucursal.siguiente;
         }
 
-        // Verificar si todas las paradas están cubiertas
+        // Verificar si todas las paradas están cubiertas.
+        
         MiConjunto<String> paradasTotales = grafo.obtenerParadas();
         if (cubiertas.contieneTodos(paradasTotales)) {
             JOptionPane.showMessageDialog(null, "Todas las paradas están cubiertas por las sucursales existentes.");
         } else {
-            // Sugerir paradas para colocar nuevas sucursales usando un enfoque eficiente
+            
+        // Sugerir paradas para colocar nuevas sucursales usando un enfoque eficiente.
+            
             MiConjunto<String> noCubiertas = new MiConjunto<>();
             Nodo<String> paradaNodo = paradasTotales.obtenerElementos().cabeza;
             while (paradaNodo != null) {
@@ -321,7 +344,7 @@ public class RedTransporte {
                 String mejorParada = null;
                 int maxCobertura = 0;
 
-                // Encontrar la parada que cubra la mayor cantidad de paradas no cubiertas
+        // Encontrar la parada que cubra la mayor cantidad de paradas no cubiertas.
                 Nodo<String> noCubiertaNodo = noCubiertas.obtenerElementos().cabeza;
                 while (noCubiertaNodo != null) {
                     String parada = noCubiertaNodo.valor;
@@ -355,6 +378,8 @@ public class RedTransporte {
             JOptionPane.showMessageDialog(null, "Se sugiere colocar sucursales en las siguientes paradas para lograr la cobertura total: " + sugerencias.coberturaToString());
         }
     }
+    
+        //Metodo usado en RevisarCoberturaTotal que obtiene la cobertura desde una parada para luego encontrar las paradas mas eficientes.
 
     private MiConjunto<String> obtenerCoberturaDesdeParada(String paradaInicial) {
         MiConjunto<String> cobertura = new MiConjunto<>();

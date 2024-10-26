@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase auxiliar tipo Nodo basica.
+
 class Nodo<T> {
     T valor;
     Nodo<T> siguiente;

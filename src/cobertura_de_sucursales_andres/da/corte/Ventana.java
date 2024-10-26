@@ -17,6 +17,9 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
+    
+    // Clase tipo JFrame donde estan ubicados todos los botones con los metodos funcionales.
+    
     public Ventana() {
         initComponents();
     }
@@ -143,10 +146,14 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Boton para cerrar el programa.
+    
     private void CerrarVentanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarVentanaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_CerrarVentanaActionPerformed
-
+    
+    // Boton para agregar una Linea a la RedGlobal.
+    
     private void AgregarLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarLineaActionPerformed
         String nombreLinea = JOptionPane.showInputDialog("Ingrese el nombre de la nueva línea:");
         if (nombreLinea != null && !nombreLinea.isEmpty()) {
@@ -164,10 +171,14 @@ public class Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AgregarLineaActionPerformed
 
+    // Boton que llama al metodo para revisar la cobertura total.
+    
     private void VerCoberturaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCoberturaTotalActionPerformed
         RedGlobal.redGlobal.revisarCoberturaTotal();
     }//GEN-LAST:event_VerCoberturaTotalActionPerformed
 
+    // Boton que muestra una lista con las paradas que tengan sucursales y despues llama al metodo para revisar la cobertura de la sucursal seleccionada.
+    
     private void VerCoberturaSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCoberturaSucursalActionPerformed
         MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
         MiLista<String> paradasConSucursal = new MiLista<>();
@@ -206,7 +217,9 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_VerCoberturaSucursalActionPerformed
-
+    
+    // Boton que muestra una lista con las paradas que tengan sucursales y despues llama al metodo para quitar la sucursal de una parada seleccionada.
+    
     private void QuitarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarSucursalActionPerformed
         MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
         MiLista<String> paradasConSucursal = new MiLista<>();
@@ -247,7 +260,9 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_QuitarSucursalActionPerformed
-
+    
+    // Boton que muestra una lista con todas las paradas en RedGlobal y te permite colocar una sucursal en una de ellas.
+    
     private void ColocarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColocarSucursalActionPerformed
         MiConjunto<String> paradasDisponibles = RedGlobal.redGlobal.paradas.obtenerClaves();
         MiLista<String> paradasFiltradas = new MiLista<>();
@@ -289,7 +304,9 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor seleccione una parada válida.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_ColocarSucursalActionPerformed
-
+    
+    // Boton para llamar al meetodo que permite el cambio de Radio (t).
+    
     private void EstablecerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstablecerRadioActionPerformed
         String nuevoRadio = JOptionPane.showInputDialog(this, "Ingrese el valor del nuevo radio:");
         try {
@@ -300,11 +317,15 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_EstablecerRadioActionPerformed
-
+    
+    // Boton para llamar al metodo para mostrar el Grafo.
+    
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         RedGlobal.redGlobal.mostrarGrafo();
     }//GEN-LAST:event_MostrarGrafoActionPerformed
-
+    
+    // Boton para llamar al metodo para cargar un archivo Json y luego ser ingresado en RedGlobal.
+    
     private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
         try {
             RedGlobal.redGlobal.cargarDesdeArchivo();
@@ -313,7 +334,9 @@ public class Ventana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se ha podido cargar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_CargarArchivoActionPerformed
-
+    
+    //Boton para llamar a la Ventana anterior (Ventana de Inicio).
+    
     private void VentanaAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentanaAnteriorActionPerformed
         VentanaInicio inicio = new VentanaInicio();
         inicio.setLocationRelativeTo(null);

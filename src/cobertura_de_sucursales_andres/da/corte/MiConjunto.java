@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase auxiliar para el manejo de datos en Lista Global.
+
 public class MiConjunto<T> {
     private MiLista<T> elementos;
 

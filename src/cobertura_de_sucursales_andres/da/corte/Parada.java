@@ -4,6 +4,8 @@
  */
 package cobertura_de_sucursales_andres.da.corte;
 
+// Clase parada con sus distintos metodos basicos.
+
 public class Parada {
     private String nombre;
     private boolean esTransferencia;

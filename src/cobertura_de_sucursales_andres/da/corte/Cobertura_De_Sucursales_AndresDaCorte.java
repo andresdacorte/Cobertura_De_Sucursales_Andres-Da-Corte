@@ -13,6 +13,9 @@ public class Cobertura_De_Sucursales_AndresDaCorte {
     /**
      * @param args the command line arguments
      */
+    
+    // Se Inicia la primera ventana.
+    
     public static void main(String[] args) {
          
         VentanaInicio inicio = new VentanaInicio();

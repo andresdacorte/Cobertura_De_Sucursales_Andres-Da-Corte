@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase Grafo para la implementacion de Graph Stream.
+
 public class Grafo {
     private MiMapa<String, MiLista<String>> adyacencias;
 

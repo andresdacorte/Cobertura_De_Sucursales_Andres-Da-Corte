@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase auxiliar alternativa a Hashmap para el manejo eficiente de datos clave-valor.
+
 class MiMapa<K, V> {
     private MiLista<NodoMapa<K, V>> elementos;
 

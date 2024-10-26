@@ -8,6 +8,9 @@ package cobertura_de_sucursales_andres.da.corte;
  *
  * @author dacor
  */
+
+// Clase de tipo RedTransporte para el manejo de una lista global.
+
 public class RedGlobal {
     
     public static RedTransporte redGlobal = new RedTransporte();
